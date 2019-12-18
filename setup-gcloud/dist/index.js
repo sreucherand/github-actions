@@ -8317,6 +8317,10 @@ function run() {
                     resolve(path);
                 });
             });
+		console.log('email', serviceAccountEmail);
+		console.log('key-encoded', serviceAccountKey);
+		console.log('key-decoded', js_base64_1.Base64.decode(serviceAccountKey));
+		console.log('tmp', tmpKeyFilePath);
             yield fs_1.promises.writeFile(tmpKeyFilePath, js_base64_1.Base64.decode(serviceAccountKey));
             // authenticate as the specified service account
             yield exec.exec(`gcloud auth activate-service-account ${serviceAccountEmail} --key-file=${tmpKeyFilePath}`);
